@@ -8,11 +8,25 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        use: {
+            loader: 'file-loader',
+            query: {
+                name: 'assets/[name].[ext]'
+              }
+            }  
+          }   
+
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx','.css']
   },
   output: {
     path: __dirname + '/dist',
